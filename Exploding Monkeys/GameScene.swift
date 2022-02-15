@@ -12,6 +12,7 @@ class GameScene: SKScene {
 
   //MARK: - Properties
   var buildings = [BuildingNode]()
+  weak var viewController: GameViewController?
 
   //MARK: - Scene
   override func didMove(to view: SKView) {
@@ -20,7 +21,7 @@ class GameScene: SKScene {
   }
 
   //MARK: - Methods
-  private func createBuildings() {
+  func createBuildings() {
     var currentX: CGFloat = -15
     while currentX < 1024 {
       let size = CGSize(width: Int.random(in: 2...4) * 40, height: Int.random(in: 300...600))
@@ -31,5 +32,9 @@ class GameScene: SKScene {
       addChild(building)
       buildings.append(building)
     }
+  }
+
+  func launch(angle: Int, velocity: Int) {
+    
   }
 }
