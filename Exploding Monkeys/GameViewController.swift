@@ -12,7 +12,20 @@ import GameplayKit
 class GameViewController: UIViewController {
 
   //MARK: - Properties
-  var currentGame: GameScene?
+  var currentGame: GameScene!
+  var isGameOver = false
+  var playerOneScore = 0 {
+    didSet {
+      playerOneScoreLabel.text = "\(playerOneScore)"
+      checkForWinner()
+    }
+  }
+  var playerTwoScore = 0 {
+    didSet {
+      playerTwoScoreLabel.text = "\(playerTwoScore)"
+      checkForWinner()
+    }
+  }
 
   //MARK: - Outlets
   @IBOutlet var angleSlider: UISlider!
@@ -21,6 +34,8 @@ class GameViewController: UIViewController {
   @IBOutlet var velocityLabel: UILabel!
   @IBOutlet var launchButton: UIButton!
   @IBOutlet var playerNumber: UILabel!
+  @IBOutlet var playerOneScoreLabel: UILabel!
+  @IBOutlet var playerTwoScoreLabel: UILabel!
 
   //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -67,22 +82,40 @@ class GameViewController: UIViewController {
     }
 
   //MARK: - Methods
+  private func checkForWinner() {
+    if playerOneScore == 3 {
+      hideControls(true)
+      isGameOver = true
+      playerNumber.textAlignment = .center
+      playerNumber.text = "Player One Win's!"
+    } else if playerTwoScore == 3 {
+      hideControls(true)
+      isGameOver = true
+      playerNumber.textAlignment = .center
+      playerNumber.text = "Player Two Win's!"
+    }
+  }
 
   func activatePlayer(number: Int) {
     if number == 1 {
+      playerNumber.textAlignment = .left
       playerNumber.text = "<<< PLAYER ONE"
     } else {
+      playerNumber.textAlignment = .right
       playerNumber.text = "PLAYER TWO >>>"
     }
-    angleSlider.isHidden = false
-    angleLabel.isHidden = false
-    velocitySlider.isHidden = false
-    velocityLabel.isHidden = false
-    launchButton.isHidden = false
+    hideControls(false)
+  }
+
+  private func hideControls(_ bool: Bool) {
+    angleSlider.isHidden = bool
+    angleLabel.isHidden = bool
+    velocitySlider.isHidden = bool
+    velocityLabel.isHidden = bool
+    launchButton.isHidden = bool
   }
 
   //MARK: - Actions
-
   @IBAction func angleChanged(_ sender: Any) {
     angleLabel.text = "Angle: \(Int(angleSlider.value))°"
   }
@@ -92,13 +125,7 @@ class GameViewController: UIViewController {
   }
 
   @IBAction func launch(_ sender: Any) {
-    angleSlider.isHidden = true
-    angleLabel.isHidden = true
-    velocitySlider.isHidden = true
-    velocityLabel.isHidden = true
-    launchButton.isHidden = true
+    hideControls(true)
     currentGame?.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
   }
-
-
 }

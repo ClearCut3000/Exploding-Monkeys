@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		365621C227BC3F020071B21C /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = 365621C027BC3F020071B21C /* hitBuilding.sks */; };
 		365621C327BC3F020071B21C /* hitPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = 365621C127BC3F020071B21C /* hitPlayer.sks */; };
+		365621C727BE94A60071B21C /* Rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 365621C527BE94A60071B21C /* Rain.sks */; };
+		365621C827BE94A60071B21C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 365621C627BE94A60071B21C /* Assets.xcassets */; };
+		365621CA27BEB1190071B21C /* wind.sks in Resources */ = {isa = PBXBuildFile; fileRef = 365621C927BEB1190071B21C /* wind.sks */; };
+		365621D127BEBD430071B21C /* scr006.png in Resources */ = {isa = PBXBuildFile; fileRef = 365621CB27BEBD420071B21C /* scr006.png */; };
+		365621D227BEBD430071B21C /* scr003.png in Resources */ = {isa = PBXBuildFile; fileRef = 365621CC27BEBD420071B21C /* scr003.png */; };
+		365621D327BEBD430071B21C /* scr004.png in Resources */ = {isa = PBXBuildFile; fileRef = 365621CD27BEBD420071B21C /* scr004.png */; };
+		365621D427BEBD430071B21C /* scr001.png in Resources */ = {isa = PBXBuildFile; fileRef = 365621CE27BEBD430071B21C /* scr001.png */; };
+		365621D527BEBD430071B21C /* scr002.png in Resources */ = {isa = PBXBuildFile; fileRef = 365621CF27BEBD430071B21C /* scr002.png */; };
+		365621D627BEBD430071B21C /* scr005.png in Resources */ = {isa = PBXBuildFile; fileRef = 365621D027BEBD430071B21C /* scr005.png */; };
 		36698BED27BACA9B00D77EA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36698BEC27BACA9B00D77EA8 /* AppDelegate.swift */; };
 		36698BEF27BACA9B00D77EA8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 36698BEE27BACA9B00D77EA8 /* GameScene.sks */; };
 		36698BF327BACA9B00D77EA8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36698BF227BACA9B00D77EA8 /* GameScene.swift */; };
@@ -23,6 +32,15 @@
 /* Begin PBXFileReference section */
 		365621C027BC3F020071B21C /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
 		365621C127BC3F020071B21C /* hitPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitPlayer.sks; sourceTree = "<group>"; };
+		365621C527BE94A60071B21C /* Rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rain.sks; sourceTree = "<group>"; };
+		365621C627BE94A60071B21C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		365621C927BEB1190071B21C /* wind.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = wind.sks; sourceTree = "<group>"; };
+		365621CB27BEBD420071B21C /* scr006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scr006.png; sourceTree = "<group>"; };
+		365621CC27BEBD420071B21C /* scr003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scr003.png; sourceTree = "<group>"; };
+		365621CD27BEBD420071B21C /* scr004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scr004.png; sourceTree = "<group>"; };
+		365621CE27BEBD430071B21C /* scr001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scr001.png; sourceTree = "<group>"; };
+		365621CF27BEBD430071B21C /* scr002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scr002.png; sourceTree = "<group>"; };
+		365621D027BEBD430071B21C /* scr005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scr005.png; sourceTree = "<group>"; };
 		36698BE927BACA9B00D77EA8 /* Exploding Monkeys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exploding Monkeys.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36698BEC27BACA9B00D77EA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36698BEE27BACA9B00D77EA8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -46,9 +64,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		365621C427BE93A60071B21C /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				365621CE27BEBD430071B21C /* scr001.png */,
+				365621CF27BEBD430071B21C /* scr002.png */,
+				365621CC27BEBD420071B21C /* scr003.png */,
+				365621CD27BEBD420071B21C /* scr004.png */,
+				365621D027BEBD430071B21C /* scr005.png */,
+				365621CB27BEBD420071B21C /* scr006.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		36698BE027BACA9A00D77EA8 = {
 			isa = PBXGroup;
 			children = (
+				365621C627BE94A60071B21C /* Assets.xcassets */,
+				365621C427BE93A60071B21C /* Screenshots */,
 				36698BEB27BACA9B00D77EA8 /* Exploding Monkeys */,
 				36698BEA27BACA9B00D77EA8 /* Products */,
 			);
@@ -76,6 +109,8 @@
 				36698C0527BACDB000D77EA8 /* CollisionTypes.swift */,
 				365621C027BC3F020071B21C /* hitBuilding.sks */,
 				365621C127BC3F020071B21C /* hitPlayer.sks */,
+				365621C527BE94A60071B21C /* Rain.sks */,
+				365621C927BEB1190071B21C /* wind.sks */,
 			);
 			path = "Exploding Monkeys";
 			sourceTree = "<group>";
@@ -138,11 +173,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				365621D427BEBD430071B21C /* scr001.png in Resources */,
 				36698BF827BACA9B00D77EA8 /* Main.storyboard in Resources */,
+				365621D127BEBD430071B21C /* scr006.png in Resources */,
 				365621C227BC3F020071B21C /* hitBuilding.sks in Resources */,
+				365621CA27BEB1190071B21C /* wind.sks in Resources */,
+				365621D527BEBD430071B21C /* scr002.png in Resources */,
+				365621C727BE94A60071B21C /* Rain.sks in Resources */,
 				365621C327BC3F020071B21C /* hitPlayer.sks in Resources */,
 				36698BEF27BACA9B00D77EA8 /* GameScene.sks in Resources */,
 				36698BFA27BACAA300D77EA8 /* Assets.xcassets in Resources */,
+				365621C827BE94A60071B21C /* Assets.xcassets in Resources */,
+				365621D627BEBD430071B21C /* scr005.png in Resources */,
+				365621D327BEBD430071B21C /* scr004.png in Resources */,
+				365621D227BEBD430071B21C /* scr003.png in Resources */,
 				36698BFD27BACAA300D77EA8 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,7 +357,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -324,7 +368,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -341,7 +385,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -352,7 +396,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

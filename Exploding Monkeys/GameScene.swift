@@ -8,11 +8,11 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+final class GameScene: SKScene, SKPhysicsContactDelegate {
 
   //MARK: - Properties
   private var buildings = [BuildingNode]()
-  weak var viewController: GameViewController?
+  weak var viewController: GameViewController!
   private var playerOne: SKSpriteNode!
   private var playerTwo: SKSpriteNode!
   private var banana: SKSpriteNode!
@@ -23,6 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
     createBuildings()
     createPlayers()
+    createWeather()
     physicsWorld.contactDelegate = self
   }
 
@@ -49,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
   }
 
-  private func launch(angle: Int, velocity: Int) {
+  func launch(angle: Int, velocity: Int) {
     let speed = Double(velocity) / 10
     let radians = deg2rad(degrees: angle)
     if banana != nil {
@@ -123,14 +124,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     player.removeFromParent()
     banana.removeFromParent()
-    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-      let newGame = GameScene(size: self.size)
-      newGame.viewController = self.viewController
-      self.viewController?.currentGame = newGame
-      self.changePlayer()
-      newGame.currentPlayer = self.currentPlayer
-      let transition = SKTransition.doorway(withDuration: 1.5)
-      self.view?.presentScene(newGame, transition: transition)
+    if !viewController.isGameOver {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        let newGame = GameScene(size: self.size)
+        newGame.viewController = self.viewController
+        self.viewController?.currentGame = newGame
+        self.changePlayer()
+        newGame.currentPlayer = self.currentPlayer
+        let transition = SKTransition.doorway(withDuration: 1.5)
+        self.view?.presentScene(newGame, transition: transition)
+      }
+    } else {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        let newGame = GameScene(size: self.size)
+        newGame.viewController = self.viewController
+        self.viewController?.currentGame = newGame
+        self.changePlayer()
+        newGame.currentPlayer = self.currentPlayer
+        self.viewController.playerOneScore = 0
+        self.viewController.playerTwoScore = 0
+        self.viewController.isGameOver = false
+        let transition = SKTransition.doorway(withDuration: 1.5)
+        self.view?.presentScene(newGame, transition: transition)
+      }
     }
   }
 
@@ -153,6 +169,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     changePlayer()
   }
 
+  private func createWeather() {
+    let windy = Bool.random()
+    let rainy = Bool.random()
+    if windy || rainy {
+      var dx: CGFloat = -3.0
+      var dy: CGFloat = -3.0
+      if windy {
+        let left = Bool.random()
+        dx = left ? CGFloat.random(in: -8 ... -3) : CGFloat.random(in: 1...3)
+        print ("windy")
+        if let wind = SKEmitterNode(fileNamed: "wind") {
+          wind.position = CGPoint(x: 1024, y: 384)
+          wind.advanceSimulationTime(10)
+          if !left {
+            wind.emissionAngle = 0
+          }
+          addChild(wind)
+          wind.zPosition = 0
+        }
+      }
+      if rainy {
+        let left = Bool.random()
+        dy = left ? CGFloat.random(in: -8 ... -3) : CGFloat.random(in: 1...3)
+        print ("rainy")
+        if let rain = SKEmitterNode(fileNamed: "Rain") {
+          rain.position = CGPoint(x: 512, y: 768)
+          rain.advanceSimulationTime(10)
+          if !left {
+            rain.emissionAngle = 310 * .pi / 180
+          }
+          addChild(rain)
+          rain.zPosition = 0
+        }
+      }
+      let randomVector = CGVector(dx: dx, dy: dy)
+      physicsWorld.gravity = randomVector
+    }
+  }
+
   //MARK: - Collision and contact methods
   func didBegin(_ contact: SKPhysicsContact) {
     let firstBody: SKPhysicsBody
@@ -170,9 +225,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       bananaHit(building: secondNode, atPoint: contact.contactPoint)
     }
     if firstNode.name == "banana" && secondNode.name == "player1" {
+      viewController?.playerTwoScore += 1
       destroy(player: playerOne)
     }
     if firstNode.name == "banana" && secondNode.name == "player2" {
+      viewController?.playerOneScore += 1
       destroy(player: playerTwo)
     }
   }
